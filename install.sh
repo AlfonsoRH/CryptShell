@@ -9,8 +9,23 @@ sudo apt update && sudo apt install -y \
     python3 python3-pip python3-venv \
     neovim zsh fzf
 
+echo "⚙️ Configurando Zsh..."
+touch ~/.zshrc
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+echo "export ZSH=\"$HOME/.oh-my-zsh\"" >> ~/.zshrc
+echo "source \$ZSH/oh-my-zsh.sh" >> ~/.zshrc
+echo "export SHELL=$(which zsh)" >> ~/.zshrc
+
+echo "🔄 Aplicando configuración..."
+source ~/.zshrc
+
 echo "🎨 Instalando Starship..."
 curl -sS https://starship.rs/install.sh | sh -s -- -y
+
+echo -e "${GREEN}🔹 Configurando Starship...${RESET}"
+mkdir -p ~/.config
+cp ./starship.toml ~/.config/starship.toml
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
 echo "🐚 Configurando Zsh como shell predeterminado..."
 chsh -s $(which zsh)
