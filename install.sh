@@ -7,7 +7,8 @@ sudo apt update && sudo apt install -y \
     git curl wget unzip ripgrep fd-find \
     build-essential gcc g++ make \
     python3 python3-pip python3-venv \
-    neovim zsh fzf
+    neovim zsh fzf figlet lolcat \
+    fonts-powerline
 
 echo "⚙️ Configurando Zsh..."
 touch ~/.zshrc
@@ -39,6 +40,9 @@ cp -r ~/CryptShell/nvim ~/.config/
 
 echo "🔄 Instalando plugins de Neovim..."
 nvim --headless "+Lazy sync" +qa
+
+echo "🎉 Instalando Oh My Zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "✅ Instalación completada. Reinicia la terminal para aplicar cambios."
 
